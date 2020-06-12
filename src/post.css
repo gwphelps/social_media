@@ -1,0 +1,32 @@
+.post{
+  background-color: white;
+  margin: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 500px;
+  padding: 10px;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+.post-avatar{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.username-post {
+}
+.post-message{
+  margin-top: 5px;
+}
+
+@media only screen and (max-width:500px) {
+  .post{
+    width: 99%;
+  }
+  .post-avatar {
+
+  }
+}
