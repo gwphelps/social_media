@@ -18,7 +18,7 @@ class Profile extends React.Component {
       let posts = JSON.parse(xhr.response);
       let postState = this.state.posts;
       for(let i = 0; i < posts.length; i++){
-        postState.push(<Post id={posts[i].id} data={posts[i]}/>);
+        postState.push({key: posts[i].id, data: posts[i]});
       }
       this.setState({posts: postState});
       console.log(this.state);
@@ -36,10 +36,10 @@ class Profile extends React.Component {
           <div className="profile-header">
             <img style={{alignSelf: "center"}} src={this.state.user.avatar} className="large-img"/>
             <h2 style={{alignSelf: "center"}}>{this.state.user.username}</h2>
-            <Link style={{textDecoration:"none"}} to="/edit"><div class="post-button">Edit</div></Link>
+            <Link style={{textDecoration:"none"}} to="/edit"><div className="post-button">Edit</div></Link>
           </div>
         </div>
-        <div className="user-posts">{this.state.posts}</div>
+        <div className="user-posts">{this.state.posts.map(post => <Post key={post.key} data={post.data}/>)}</div>
       </div>
     );
   }

@@ -45,6 +45,7 @@ input[type='text'] {
   margin-top: 50px;
   background-color: #ccccff;
   width: 550px;
+  min-height: 83vh;
 }
 .header{
   background-color: #9963ed;
@@ -88,7 +89,7 @@ input[type='text'] {
 }
 
 .nav-icon{
-  
+
   display: block;
   color: black;
 
@@ -149,6 +150,7 @@ input[type='text'] {
 }
 .post-button:hover {
   background-color: #6b45a6;
+  cursor: pointer;
 }
 .create{
   padding-top: 10px;
@@ -204,6 +206,18 @@ input[type='text'] {
 }
 #profile{
   margin: 1px;
+}
+.edit {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.edit-container{
+  
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  width: 470px;
 }
 
 
@@ -266,5 +280,7 @@ input[type='text'] {
   .create {
     padding-left: 0;
   }
-
+  .edit-container{
+    width: 90vw;
+  }
 }

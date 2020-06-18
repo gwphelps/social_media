@@ -7,6 +7,7 @@ class Create extends React.Component {
     super(props);
     this.setHeight = this.setHeight.bind(this);
     this.newPost = this.newPost.bind(this);
+    this.errorText = React.createRef();
     this.state = {
       message: ""
     }
@@ -26,10 +27,12 @@ class Create extends React.Component {
       message: this.state.message,
       date: date_format
     };
-    xhr.onload = () {
-      
+    xhr.onload = () => {
+      if(xhr.response == "false"){
+
+      }
     };
-    xhr.send(JSON.stringify(postObj))
+    xhr.send(JSON.stringify(postObj));
   }
 
 

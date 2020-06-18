@@ -37,7 +37,7 @@ class Login extends React.Component {
   render(){
     return(
       <div className="login">
-        <p style={{color: "red"}} style={{display: "none"}}ref={this.errorText}>{this.state.errorString}</p>
+        <p style={{color: "red"}} style={{display: "none"}} ref={this.errorText}>{this.state.errorString}</p>
         <h2>username</h2>
         <input className="input-bar" type="text"
           onChange={e => this.setState({username: e.target.value})}

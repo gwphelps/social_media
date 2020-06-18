@@ -7,6 +7,7 @@ import Create from "./create.jsx";
 import Login from "./login.jsx";
 import Register from "./register.jsx";
 import Profile from "./profile.jsx";
+import Edit from "./edit.jsx";
 import {
   BrowserRouter as Router,
   Switch,
@@ -69,6 +70,9 @@ class HomeComponent extends React.Component{
                   </Route>
                   <Route exact path="/profile">
                     <Profile user={this.state.user} />
+                  </Route>
+                  <Route exact path="/edit">
+                    <Edit user={this.state.user} />
                   </Route>
                 </Switch>
               </div>

@@ -7,8 +7,8 @@ function connectDB(){
   });
 
   con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
+    if (err) console.log("connection failed");
+    else console.log("Connected!");
   });
   con.query("use user_database;");
   return con;
@@ -33,7 +33,7 @@ function addUser(user, func){
       func("true");
     }
     con.end(function(err){
-      if(err) throw err;
+      if(err) console.log(err);
       console.log("Disconnected!");
     });
   });
@@ -48,18 +48,34 @@ function login(data, func){
       func("false");
     }
     else {
+      if(Object.keys(result).length == 0){func("false");}
       Object.keys(result).forEach(function(key) {
         var row = result[key];
         func(JSON.stringify(row));
       });
+
     }
     con.end(function(err){
-      if(err) throw err;
+      if(err) console.log(err);
       console.log("Disconnected!");
     });
   });
 }
 
+function addPost(obj, func){
+  let query = `insert into Posts (date, message, user_id) values (\"${obj.date}\", \"${obj.message}\", \"${obj.user_id}\");`;
+  let con = connectDB();
+  con.query(query, function(err, result){
+    if(err) {console.log(err.code); func("false");}
+    else{
+      func("true");
+      con.end(function(err){
+        if(err) console.log(err);
+        console.log("Disconnected");
+      });
+    }
+  });
+}
 
 function getPosts(id, func){
   let con = connectDB();
@@ -81,7 +97,7 @@ function getPosts(id, func){
       });
     }
     con.end(function(err){
-      if(err) throw err;
+      if(err) console.log(err);
       console.log("Disconnected!");
     });
   });
@@ -89,3 +105,4 @@ function getPosts(id, func){
 exports.addUser = addUser;
 exports.login = login;
 exports.getPosts = getPosts;
+exports.addPost = addPost;
